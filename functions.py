@@ -42,8 +42,22 @@ def fill_routes(maze, maze_costs, current_row, current_col, last_cost = 0, last_
 
     return routes
 
-def throw_cat(available_positions):
-    return available_positions[randint(0, len(available_positions)-1)]
+def generate_position(available_positions):
+    drawn_position = available_positions[randint(0, len(available_positions)-1)]
+    return drawn_position
+
+def throw_cat(maze, position, routes, changed_routes = None):
+    if changed_routes is not None:
+        for route in changed_routes:
+            routes[route.keys()[0]] = route.values()[0]
+
+    changed_routes = []
+    for back_position in possible_back_moves(maze, position[0], position[1]):
+        changed_routes.append({ (back_position[0], back_position[1]): { (position[0], position[1]): routes[(back_position[0], back_position[1])][(position[0], position[1])] } })
+        routes[(back_position[0], back_position[1])][(position[0], position[1])] = float('inf')
+
+    return changed_routes
+
 
 def rat_start_position(maze):
     return (0, 0)

@@ -1,5 +1,5 @@
 import sys
-from functions import fill_routes, rat_start_position, available_positions, throw_cat
+from functions import *
 
 maze_file = open('maze.txt' , 'r')
 maze_costs_file = open('maze_costs.txt' , 'r')
@@ -10,4 +10,6 @@ routes = fill_routes(maze, maze_costs, 2, 3)
 rat_start_position = rat_start_position(maze)
 maze_available_positions = available_positions(maze)
 
-print throw_cat(maze_available_positions)
+changed_routes = throw_cat(maze, (1, 0), routes)
+throw_cat(maze, (1, 1), routes, changed_routes)
+print routes
