@@ -1,4 +1,4 @@
-def possible_reverse_moves(maze, current_row, current_col):
+def possible_back_moves(maze, current_row, current_col):
     possible = []
     next_row = current_row - 1
     next_col = current_col - 1
@@ -9,18 +9,6 @@ def possible_reverse_moves(maze, current_row, current_col):
         possible.append((current_row, next_col))
 
     return possible
-
-# def possible_moves(maze, current_row, current_col):
-#     possible = []
-#     next_row = current_row + 1
-#     next_col = current_col + 1
-#     if (next_row <= len(maze)-1 and maze[next_row][current_col] != 0):
-#         possible.append((next_row, current_col))
-
-#     if (next_col <= len(maze[current_row])-1 and maze[current_row][next_col] != 0):
-#         possible.append((current_row, next_col))
-
-#     return possible
 
 def add_route(origin, destination, cost, routes):
     if origin in routes:
@@ -38,7 +26,7 @@ def fill_routes(maze, maze_costs, current_row, current_col, last_cost = 0, last_
     add_route((current_row, current_col), last_position, cost, routes)
 
     current_position = (current_row, current_col)
-    for position in possible_reverse_moves(maze, current_row, current_col):
+    for position in possible_back_moves(maze, current_row, current_col):
         fill_routes(maze, maze_costs, position[0], position[1], cost, current_position, routes)
 
     return routes
