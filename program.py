@@ -23,20 +23,19 @@ exit_position = exit_position(maze)
 routes = fill_routes(maze, maze_costs, exit_position[0], exit_position[1])
 rat_position = rat_start_position(maze)
 maze_available_positions = available_positions(maze)
-changed_routes = None
 
 while rat_position != exit_position:
-    rat_position = go_rat(rat_position, routes)
-    if rat_position is None:
-        print "There's no way to Brain"
-        break
-    else:
-        print "Brain is at " + `rat_position`
-
     cat_position = generate_position(maze_available_positions)
     print "Cat is at " + `cat_position`
 
     if cat_position == rat_position:
         print "The cat caught the rat"
         break
-    changed_routes = throw_cat(maze, cat_position, routes, changed_routes)
+    throw_cat(maze, cat_position, routes)
+
+    rat_position = go_rat(rat_position, routes)
+    if rat_position is None:
+        print "There's no way to Brain"
+        break
+    else:
+        print "Brain is at " + `rat_position`
