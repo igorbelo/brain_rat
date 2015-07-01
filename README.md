@@ -1,6 +1,8 @@
 <h2>Identificação</h2>
 <strong>Aluno:</strong> Igor Coura Belo
+
 <strong>Período:</strong> 6
+
 <strong>Disciplina:</strong> Técnicas de Programação Avançada (TPA)
 
 <h2>Problema</h2>
