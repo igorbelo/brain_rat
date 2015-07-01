@@ -75,7 +75,21 @@ def go_rat(position, routes):
 
 
 def rat_start_position(maze):
-    return (0, 0)
+    i = 0
+    for row in maze:
+        j = 0
+        for elem in row:
+            if elem == 'S':
+                return (i, j)
+            j += 1
+        i += 1
 
 def exit_position(maze):
-    return (2, 3)
+    i = 0
+    for row in maze:
+        j = 0
+        for elem in row:
+            if elem == 'F':
+                return (i, j)
+            j += 1
+        i += 1
