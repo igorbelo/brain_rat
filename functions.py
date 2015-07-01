@@ -49,7 +49,7 @@ def generate_position(available_positions):
 def throw_cat(maze, position, routes, changed_routes = None):
     if changed_routes is not None:
         for route in changed_routes:
-            routes[route.keys()[0]] = route.values()[0]
+            routes[route.keys()[0]][route.values()[0].keys()[0]] = route.values()[0].values()[0]
 
     changed_routes = []
     for back_position in possible_back_moves(maze, position[0], position[1]):
@@ -58,6 +58,24 @@ def throw_cat(maze, position, routes, changed_routes = None):
 
     return changed_routes
 
+def get_next_destination(position, routes):
+    minimum = float('inf')
+    next_route = None
+    
+    for route in routes[(position[0], position[1])]:
+        route_cost = routes[(position[0], position[1])][route]
+        if route_cost < minimum:
+            minimum = route_cost
+            next_route = route
+
+    return next_route
+
+def go_rat(position, routes):
+    return get_next_destination(position, routes)
+
 
 def rat_start_position(maze):
     return (0, 0)
+
+def exit_position(maze):
+    return (2, 3)
