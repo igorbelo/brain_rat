@@ -1,3 +1,4 @@
+import sys
 from random import randint
 
 def available_positions(maze):
@@ -23,11 +24,7 @@ def possible_back_moves(maze, current_row, current_col):
 
 def add_route(origin, destination, cost, routes):
     if origin in routes:
-        if destination in routes[origin]:
-            if cost < routes[origin][destination]:
-                routes[origin][destination] = cost
-        else:
-            routes[origin][destination] = cost
+        routes[origin][destination] = cost
     else:
         routes[origin] = { destination: cost }
 
@@ -46,13 +43,8 @@ def generate_position(available_positions):
     drawn_position = available_positions[randint(0, len(available_positions)-1)]
     return drawn_position
 
-def throw_cat(maze, position, routes):
-    back_moves = possible_back_moves(maze, position[0], position[1])
-    for back_move in back_moves:
-        routes[back_move][(position[0], position[1])] = float('inf')
-        throw_cat(maze, back_move, routes)
-
-    return routes
+def throw_cat(maze_costs, position):
+    maze_costs[position[0]][position[1]] = float('inf')
 
 def go_rat(position, routes):
     minimum = float('inf')
@@ -85,3 +77,21 @@ def exit_position(maze):
                 return (i, j)
             j += 1
         i += 1
+
+def escape(maze, maze_costs, rat_position, exit_position, available_positions, routes, output = sys.stdout):
+    while rat_position != exit_position:
+        cat_position = generate_position(available_positions)
+        output.write("Cat is at " + `cat_position` + "\n")
+
+        if cat_position == rat_position:
+            output.write("The cat caught the rat\n")
+            break
+        throw_cat(maze_costs, cat_position)
+        routes = fill_routes(maze, maze_costs, exit_position[0], exit_position[1])
+
+        rat_position = go_rat(rat_position, routes)
+        if rat_position is None:
+            output.write("There's no way to Brain\n")
+            break
+        else:
+            output.write("Brain is at " + `rat_position` + "\n")
