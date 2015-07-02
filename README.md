@@ -51,5 +51,20 @@ Essa implementação deve ser recursiva, que recebe uma posição, a posição a
 <h2>Análise de complexidade</h2>
 
 <h2>Testes realizados</h2>
+Foram implementados testes automatizados de todas as funções implementadas.
+Foi utilizada a biblioteca unittest do Python. Abaixo, o link para a implementação dos testes.
+<ul>
+  <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/available_positions.py">available_positions</a></li>
+  <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/exit_position.py">exit_position</a></li>
+  <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/fill_routes.py">fill_routes</a></li>
+  <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/go_rat.py">go_rat</a></li>
+  <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/possible_back_moves.py">possible_back_moves</a></li>
+  <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/rat_start_position.py">rat_start_position</a></li>
+</ul>
+Comando para rodar os testes no diretório raíz do projeto:
+```python -m unittest discover -s test/ -p '*.py'```
 
 <h2>Conclusão</h2>
+
+<h2>Referências</h2>
+Documentação Oficial do Python: https://docs.python.org/2/
