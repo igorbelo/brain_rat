@@ -37,7 +37,7 @@ Essa implementação deve ser recursiva, que recebe uma posição, a posição a
   Isso quer dizer que saindo da posição (0, 0), Brain pode tomar as rotas passando por (0, 1) e (1, 0), porém a que o levará para o final mais rápido é a rota passando por (0, 1)
   <li>Agora, se obtém quais são as posições possíveis no labirinto, o que será útil para escolher onde o gato irá cair. Basicamente percorrer a matriz, e acrescentar em um array as posições que têm valor 1.</li>
   <li>Implementa-se também a função que gera uma posição aleatória a partir das posições disponíveis</li>
-  <li>Implementa-se a função que põe o gato em uma posição sorteada. A partir dessa posição, atualiza-se todas as rotas que passam por essa posição recursivamente, elevando o custo das mesmas para o infinito. `throw_cat`</li>
+  <li>Implementa-se a função que põe o gato em uma posição sorteada. A partir dessa posição, atualiza-se todas as rotas que passam por essa posição recursivamente, elevando o custo das mesmas para o infinito. `put_cat`</li>
   <li>E por último, implementa-se a função que tenta movimentar o rato, a partir da posição em que o rato se encontra. Para o rato se movimentar, deve existir uma rota que não tenha o custo infinito.</li>
   <li>Enquanto o rato não estiver na posição final:</li>
   <ul>
@@ -49,6 +49,9 @@ Essa implementação deve ser recursiva, que recebe uma posição, a posição a
 </ul>
 
 <h2>Análise de complexidade</h2>
+<h3>available_positions</h3>
+Esse algoritmo possui a complexidade O(m.n), onde m é o número de linhas, e n é o número de colunas da matriz de posições possíveis.
+Também é um algoritmo ótimo, visto que todas as posições da matriz precisam ser visitadas para validar se é uma posição possível ou não
 
 <h2>Testes realizados</h2>
 Foram implementados testes automatizados de todas as funções implementadas.
@@ -59,6 +62,7 @@ Foi utilizada a biblioteca unittest do Python. Abaixo, o link para a implementa�
   <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/fill_routes.py">fill_routes</a></li>
   <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/go_rat.py">go_rat</a></li>
   <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/possible_back_moves.py">possible_back_moves</a></li>
+  <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/put_cat.py">put_cat</a></li>
   <li><a href="https://github.com/igorbelo/brain_rat/blob/master/test/rat_start_position.py">rat_start_position</a></li>
 </ul>
 Comando para rodar os testes no diretório raíz do projeto:

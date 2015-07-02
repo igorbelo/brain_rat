@@ -22,6 +22,6 @@ maze_costs = [ map(int,line.split(' ')) for line in maze_costs_file ]
 rat_position = rat_start_position(maze)
 exit_position = exit_position(maze)
 routes = fill_routes(maze, maze_costs, exit_position[0], exit_position[1])
-maze_available_positions = available_positions(maze)
 
+maze_available_positions = available_positions(maze)
 escape(maze, maze_costs, rat_position, exit_position, maze_available_positions, routes)
