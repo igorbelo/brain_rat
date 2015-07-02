@@ -14,10 +14,39 @@ Um agravante é o gato, que aparece aleatoriamente em alguma posição possível
 Brain deve evitar as rotas que passam por onde o gato está, indo por outras rotas as quais não passam pelo gato, sempre considerando a rota de menor custo.
 Caso não possua nenhuma outra rota, o jogo acaba, e infelizmente Brain não conseguirá chegar ao seu destino.
 
+A entrada das matrizes de posição e custo serão em arquivo texto.
+
 A proposta é desenvolver um sistema que ajude Brain a sair do labirinto, pela melhor rota possível, evitando o gato no caminho.
 
 <h2>Solução</h2>
+<ul>
+  <li>Primeiramente encontrar a posição de saída do labirinto, representada pela letra F.
+Basicamente percorrer todas as posições da matriz e retornar a posição que contém a letra F como valor.
+Função: `exit_position`</li>
+  <li>Utilizando a mesma idéia, encontrar também a posição inicial do rato, representada pela letra S.</li>
 
+  <li>A partir da matriz de posições, matriz de custos e posição de saída, calcular todos os custos das rotas que chegam ao fim.
+Essa implementação deve ser recursiva, que recebe uma posição, a posição anterior, o custo acumulado e as rotas.</li>
+  <ul>
+    <li>Adiciona à estrutura de rotas (Hash) uma chave que é a posição atual, essa chave recebe as rotas possíveis com seus devidos custos acumulados.</li>
+    <li>Para cada posição anterior encontrada, repete-se a operação acima</li>
+  </ul>
+  Exemplo de estrutura de saída:
+  { (0, 0): { (0, 1): 5, (1, 0): 9 } }
+  
+  Isso quer dizer que saindo da posição (0, 0), Brain pode tomar as rotas passando por (0, 1) e (1, 0), porém a que o levará para o final mais rápido é a rota passando por (0, 1)
+  <li>Agora, se obtém quais são as posições possíveis no labirinto, o que será útil para escolher onde o gato irá cair. Basicamente percorrer a matriz, e acrescentar em um array as posições que têm valor 1.</li>
+  <li>Implementa-se também a função que gera uma posição aleatória a partir das posições disponíveis</li>
+  <li>Implementa-se a função que põe o gato em uma posição sorteada. A partir dessa posição, atualiza-se todas as rotas que passam por essa posição recursivamente, elevando o custo das mesmas para o infinito. `throw_cat`</li>
+  <li>E por último, implementa-se a função que tenta movimentar o rato, a partir da posição em que o rato se encontra. Para o rato se movimentar, deve existir uma rota que não tenha o custo infinito.</li>
+  <li>Enquanto o rato não estiver na posição final:</li>
+  <ul>
+    <li>Move o gato para uma posição aleatória</li>
+    <li>Fim de jogo se o gato caiu exatamente em cima do rato</li>
+    <li>Tenta mover o rato</li>
+    <li>Fim de jogo se o rato não tem pra onde ir</li>
+  </ul>
+</ul>
 
 <h2>Análise de complexidade</h2>
 
