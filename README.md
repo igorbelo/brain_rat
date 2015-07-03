@@ -53,6 +53,8 @@ Essa implementação deve ser recursiva, que recebe uma posição, a posição a
 Esse algoritmo possui a complexidade O(m.n), onde m é o número de linhas, e n é o número de colunas da matriz de posições possíveis.
 Também é um algoritmo ótimo, visto que todas as posições da matriz precisam ser visitadas para validar se é uma posição possível ou não
 
+<h3>fill_routes</h3>
+
 <h2>Testes realizados</h2>
 Foram implementados testes automatizados de todas as funções implementadas.
 Foi utilizada a biblioteca unittest do Python. Abaixo, o link para a implementação dos testes.
@@ -69,6 +71,9 @@ Comando para rodar os testes no diretório raíz do projeto:
 ```python -m unittest discover -s test/ -p '*.py'```
 
 <h2>Conclusão</h2>
+O trabalho é de implementação simples, mas que requer bastante atenção em alguns pontos, principalmente no momento em que o gato aparece na rota escolhida pelo rato, e exige-se o recálculo das rotas.
+
+A solução consiste em vários conceitos aprendidos ao longo do curso, como recursão - função `fill_routes` -, estrutura de dados - principalmente `Hash`.
 
 <h2>Referências</h2>
 Documentação Oficial do Python: https://docs.python.org/2/
